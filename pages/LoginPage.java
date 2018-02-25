@@ -14,6 +14,11 @@ public class LoginPage {
 		this.driver = driver;
 	}
 	
+	/**
+	 * Checks if the user is currently on the login page
+	 * 
+	 * @return true if on login page, false if not
+	 */
 	public boolean isOnLoginPage() {
 		try {
 			return driver.findElement(By.className("navigation_page")).getText().contains("Authentication");
@@ -22,11 +27,20 @@ public class LoginPage {
 		}
 	}
 	
+	/**
+	 * Navigates to the login page
+	 */
 	public void navigateToLoginPage() {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.className("login"))).click();
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("login_form")));
 	}
 	
+	/**
+	 * Logs in on the login page 
+	 *
+	 * @param username
+	 * @param password
+	 */
 	public void loginWithCredentials(String username, String password) {
 		if (username == null) {
 			throw new NullPointerException("Passed parameter username cannot be null");

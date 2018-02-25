@@ -40,6 +40,10 @@ public class LoginTests {
 		}
 	}
 	
+	/**
+	 * Logs in with a valid username and password. 
+	 * Asserts that the user was logged in successfully and is no longer on the login page.
+	 */
 	@Test
 	public void validLogin() {
 		LoginPage loginPage = new LoginPage(driver);
@@ -59,6 +63,14 @@ public class LoginTests {
 		};
 	}
 	
+	/**
+	 * Attempts to log in with invalid credentials.
+	 * Asserts that the user remains on the login screen, and was not successfully logged in 
+	 *
+	 * @param the name of the scenario
+	 * @param username
+	 * @param password
+	 */
 	@Test(dataProvider="invalidCredentials")
 	public void invalidLogins(String scenarioName, String username, String password) {
 		LoginPage loginPage = new LoginPage(driver);
