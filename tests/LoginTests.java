@@ -53,19 +53,22 @@ public class LoginTests {
 		Assert.assertTrue(quickNavBarPage.isUserLoggedIn());
 	}
 	
+	/**
+	 * DataProvider for invalidLogins test case.
+	 */
 	@DataProvider(name="invalidCredentials")
 	public static Object[][] credentials() {
 		return new Object[][] {
 			{"Invalid email and password", "invalidEmail", "invalidPassword"},
 			{"Valid email with invalid password", "fakeemail@gmail.com", "invalidPassword"},
-			{"Valid email with no password", "fakemeail@gmail.com", ""},
+			{"Valid email with no password", "fakeemail@gmail.com", ""},
 			{"Blank email and password", "", ""}
 		};
 	}
 	
 	/**
 	 * Attempts to log in with invalid credentials.
-	 * Asserts that the user remains on the login screen, and was not successfully logged in 
+	 * Asserts that the user remains on the login screen, and was not successfully logged in.
 	 *
 	 * @param the name of the scenario
 	 * @param username

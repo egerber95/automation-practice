@@ -7,18 +7,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MyAccountPage {
+public class CheckoutPage {
+
 	WebDriver driver;
 	
-	public MyAccountPage(WebDriver driver) {
+	public CheckoutPage(WebDriver driver) {
 		this.driver = driver;
 	}
 	
-	public boolean isOnMyAccountPage() {
-		try {
-			return true;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
+	/**
+	 * Navigates to the user's cart
+	 */
+	public void navigateToCart() {
+		driver.findElement(By.className("shopping_cart")).click();
+		new WebDriverWait(driver, 5).until(ExpectedConditions.textToBe(By.className("navigation_page"), "Your shopping cart"));
 	}
 }
