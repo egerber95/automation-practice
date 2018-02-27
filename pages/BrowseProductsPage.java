@@ -32,5 +32,6 @@ public class BrowseProductsPage {
 		products.get(0).findElement(By.className("ajax_add_to_cart_button")).click();
 		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("layer_cart")));
 		driver.findElement(By.className("continue")).click();
+		new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOfElementLocated(By.id("layer_cart")));
 	}
 }

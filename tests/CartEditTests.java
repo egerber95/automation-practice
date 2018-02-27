@@ -5,8 +5,6 @@ import pages.CheckoutPage;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,7 +19,7 @@ public class CartEditTests {
 	
 	@BeforeClass
 	public void beforeClass() {
-		System.setProperty("webdriver.chrome.driver", "/Users/Eric/Desktop/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Eric\\Desktop\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://automationpractice.com");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("header_logo")));
@@ -29,15 +27,18 @@ public class CartEditTests {
 	
 	/**
 	 * Adds a product to the cart and asserts that the product was added correctly
+	 * Deletes the product and asserts the cart is empty
 	 */
 	@Test
-	public void addProductToCart() {
+	public void addProductToCartAndDelete() {
 		BrowseProductsPage browseProductsPage = new BrowseProductsPage(driver);
 		CheckoutPage checkoutPage = new CheckoutPage(driver);
 		browseProductsPage.navigateToProductsPage();
 		browseProductsPage.addProductToCart();
 		checkoutPage.navigateToCart();
-		// TODO add assertions
+		Assert.assertTrue(checkoutPage.getNumUniqueProducts() == 1);
+		checkoutPage.deleteAllItemsInCart();
+		Assert.assertTrue(checkoutPage.getNumUniqueProducts() == 0);
 	}
 	
 	@AfterClass

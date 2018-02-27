@@ -21,7 +21,7 @@ public class LoginTests {
 	
 	@BeforeClass
 	public void beforeClass() {
-		System.setProperty("webdriver.chrome.driver", "/Users/Eric/Desktop/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Eric\\Desktop\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://automationpractice.com");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("header_logo")));
