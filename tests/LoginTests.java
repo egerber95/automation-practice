@@ -19,6 +19,9 @@ public class LoginTests {
 	
 	WebDriver driver;
 	
+	/**
+	 * Sets properties for driver as well as the web page
+	 */
 	@BeforeClass
 	public void beforeClass() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Eric\\Desktop\\chromedriver.exe");
@@ -27,6 +30,9 @@ public class LoginTests {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("header_logo")));
 	}
 	
+	/**
+	 * Logs the current user out (if there is one logged in) and navigates to the login page
+	 */
 	@BeforeMethod
 	public void beforeMethod() {
 		LoginPage loginPage = new LoginPage(driver);
@@ -83,6 +89,9 @@ public class LoginTests {
 		Assert.assertFalse(quickNavBarPage.isUserLoggedIn());
 	}
 
+	/**
+	 * Quits the driver once all tests are completed
+	 */
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
