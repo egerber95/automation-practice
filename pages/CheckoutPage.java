@@ -27,6 +27,8 @@ public class CheckoutPage {
 	
 	/**
 	 * Gets the number of unique products in the cart
+	 * 
+	 * @return the number of products in the cart
 	 */
 	public int getNumUniqueProducts() {
 		try {
